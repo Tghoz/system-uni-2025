@@ -1,4 +1,4 @@
-import { BillIcon, MoneyIcon, TransferIcon } from "@/icons/CurrencyIcons";
+import { BillIcon, MoneyIcon, S_icon, B_icon} from "@/icons/CurrencyIcons";
 import { items } from "../../config/currencyGet";
 import { data } from "../../services/fetchPydolar";
 import { useFetch } from "../../hooks/useFetch"
@@ -21,23 +21,41 @@ export default function Currency() {
   const firstDate = createItem[ 0 ]?.date || "Fecha no disponible";
   return (
     <div className="p-4 flex flex-col md:flex-row items-center justify-center gap-8">
-      <div className="flex items-center space-x-2 md:space-x-4">
-        <div className="border-2 border-gray-400/80 rounded-full p-2 md:p-3 text-gray-500/90 ">
+      <div className="flex items-center gap-x-2 md:gap-x-4">
+
+        <div className="border-2 border-gray-400/80 rounded-full p-2 md:p-3 text-gray-500/90">
           <BillIcon h={25} w={25} />
         </div>
-        <div className="flex items-baseline mx-4 md:mx-8  ">
-          <MoneyIcon h={25} w={25} />
-          <p className="text-5xl md:text-7xl font-abel text-gray-800">
-            68<span className="text-gray-500">,575</span>
-            <span className="text-gray-500 text-xl md:text-3xl">.00</span>
-          </p>
+
+        {/* Contenedor principal de precio */}
+        <div className="flex items-baseline">
+          {/* Contenedor de íconos superpuestos */}
+          <div className="flex -space-x-3 mr-4 md:mr-2">
+            <B_icon h={25} w={25} />      
+            <div  className="mt-1">
+              <S_icon h={25} w={25} />
+          </div>
         </div>
-        <div className="border-2 border-gray-400/80 rounded-full p-1 md:p-2 text-gray-500/90 mt-5 ">
-          <TransferIcon h={20} w={20} />
+
+          {/* Texto y precio */}
+          <div className="flex flex-col leading-none">
+            <div className="flex items-baseline">
+              <p className="text-5xl md:text-7xl font-abel text-gray-800">
+                1<span className="text-gray-500">,575</span>
+                <span className="text-gray-500 text-xl md:text-3xl align-bottom">.00</span>
+              </p>
+            </div>
+            
+            {/* Fila de precio inferior */}
+            <div className="flex items-center gap-x-1.5 mt-[-4px]">
+              <MoneyIcon h={20} w={20}  />
+              <span className="text-gray-500 text-lg md:text-xl">60,99.00</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-10 mx-4 sm:mx-20">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-10 mx-4 top-0 sm:mx-20 mb-7">
         {createItem.map((item, i) => {
           const Icon = item.icon;
           return (
@@ -54,11 +72,6 @@ export default function Currency() {
         })}
         
       </div>
-
-      <div>
-        {firstDate }
-      </div>
-      
     </div>
   );
 }

@@ -108,3 +108,37 @@ export const TransferIcon = ({ w, h }) => (
     <path d="M14 20v-16l6 5.5" />
   </svg>
 );
+
+export const B_icon = ({ w, h }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={w}
+    height={h}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-letter-b">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M7 20v-16h6a4 4 0 0 1 0 8a4 4 0 0 1 0 8h-6" />
+    <path d="M7 12l6 0" />
+  </svg>
+);
+export const S_icon = ({ w, h }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={w}
+    height={h}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-letter-s-small">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1" />
+  </svg>
+);
