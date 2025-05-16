@@ -1,10 +1,4 @@
-// import { FcGoogle } from "react-icons/fc";
-// import { FaFacebook } from "react-icons/fa";
-
-// import { MdOutlinePassword } from "react-icons/md";
-// import { MdAlternateEmail } from "react-icons/md";
-// import { PiUserLight } from "react-icons/pi";
-// import { Spinner } from "@nextui-org/react";
+import { UserIcon, PassIcon, GoogleIcon, FacebookIcon, EmailIcon } from "../../../icons/AuthIcons";
 
 
 import { useForm } from "react-hook-form";
@@ -64,7 +58,7 @@ export default function RegisterForm() {
 			<h2 className="title">Sign up</h2>
 			<div className="input-field">
 				<div className="justify-center items-center flex text-2xl text-gray-400">
-					{/* <PiUserLight /> */}
+					<UserIcon h={20} w={20} />
 				</div>
 				<input
 					type="text"
@@ -78,7 +72,7 @@ export default function RegisterForm() {
 			{errors.user_name && <p className="text-red-500">{errors.user_name.message}</p>}
 			<div className="input-field">
 				<div className="justify-center items-center flex text-2xl text-gray-400">
-					{/* <MdAlternateEmail /> */}
+				<EmailIcon h={20} w={20} />	
 				</div>
 				<input type="email" placeholder="Email" {...register("email", {
 					required: "this is required",
@@ -91,7 +85,7 @@ export default function RegisterForm() {
 			{errors.email && <p className="text-red-500">{errors.email.message}</p>}
 			<div className="input-field">
 				<div className="justify-center items-center flex text-2xl text-gray-400">
-					{/* <MdOutlinePassword /> */}
+					<PassIcon h={20} w={20} />
 				</div>
 				<input {...register("password", {
 					required: "this is required",
@@ -103,10 +97,10 @@ export default function RegisterForm() {
 			<p className="social-text">Or Sign up with social platforms</p>
 			<div className="social-media">
 				<a href="#" className="social-icon">
-					{/* <FcGoogle /> */}
+					<GoogleIcon h={20} w={20} />
 				</a>
 				<a href="#" className="social-icon">
-					{/* <FaFacebook  className="text-blue-500"/> */}
+					<FacebookIcon h={20} w={20} />
 				</a>
 			</div>
 		</form>
