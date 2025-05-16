@@ -34,7 +34,7 @@ export default function RegisterForm() {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true);
 		try {
-			const url = 'http://localhost:4000/api/v1/user/register'; // Cambiado a endpoint de registro
+			const url = 'register'; // Cambiado a endpoint de registro
 			const resp = await postData(data, url);
 
 			if (resp?.error) {

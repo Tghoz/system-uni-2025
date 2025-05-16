@@ -1,8 +1,8 @@
-export const url = "http://localhost:4000/api/v1/user";
+export const urlBase = "http://localhost:4000/api/v1/user";
 
 
 export const postData = async ( data: object, url:string) => {
-  const res = await fetch(url, {
+  const res = await fetch(`${urlBase}/${url}`, {
     method: 'POST',
     credentials: 'include',
     headers: {

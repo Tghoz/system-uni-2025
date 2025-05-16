@@ -23,7 +23,7 @@ export default function FormLogin() {
   });
 
   const onSubmitHandler = async (data: LoginFormData) => {
-    const url = 'http://localhost:4000/api/v1/user/login'; // Cambia la URL según tu API
+    const url = 'login'; // Cambia la URL según tu API
     setLoading(true);
     setError(null);
     
