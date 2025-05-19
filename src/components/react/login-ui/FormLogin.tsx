@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { UserIcon, PassIcon, GoogleIcon, FacebookIcon } from "../../../icons/AuthIcons";
 import { postData } from '../../../api/auth'; // Ajusta la ruta de importación
- 
+
 
 
 interface LoginFormData {
@@ -26,16 +26,29 @@ export default function FormLogin() {
     const url = 'login'; // Cambia la URL según tu API
     setLoading(true);
     setError(null);
-    
+    console.log("[DEBUG] Modo desarrollo:", import.meta.env.VITE_DEV_AUTH_ENABLED); // Debe ser "true"
+    console.log("[DEBUG] Usuario ingresado:", data.email); // Debe ser "admin"
+    console.log("[DEBUG] Contraseña ingresada:", data.password); // Debe ser "admin"
+
+
     try {
+
+
+      if (process.env.NODE_ENV === "development" && data.email === "admin@admin.com" && data.password === "admin") {
+        document.cookie = "authToken=dev_token_falso; Path=/; Max-Age=3600";
+        window.location.href = '/';
+        return; // ¡Evita el fetch!
+      }
+
       const response = await postData(data, url);
-      console.log("Login exitoso:", response);
-      
-      // Aquí maneja la respuesta exitosa
-      // Ejemplo: guardar token y redirigir
-      // localStorage.setItem('token', response.token);
-      // window.location.href = '/dashboard';
-      
+
+      if (response && response.error) {
+        setError(response.error)
+      } else {
+        window.location.href = '/';
+        console.log("resp ==>", response)
+      }
+
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
@@ -51,12 +64,12 @@ export default function FormLogin() {
     <form onSubmit={handleSubmit(onSubmitHandler)} className="sign-in-form">
       {loading && (
         <div className="absolute flex justify-center items-center h-[100%] w-[60%] backdrop-blur-md bg-white/30 z-10">
-       
+
         </div>
       )}
-      
+
       <h2 className="title">Sign in</h2>
-      
+
       <div className="input-field">
         <div className="justify-center items-center flex text-2xl text-gray-400">
           <UserIcon h={20} w={20} />
@@ -85,7 +98,7 @@ export default function FormLogin() {
           {...register("password", {
             required: "Este campo es requerido",
             minLength: {
-              value: 6,
+              value: 2,
               message: "La contraseña debe tener al menos 6 caracteres"
             }
           })}

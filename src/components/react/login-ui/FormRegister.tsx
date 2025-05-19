@@ -72,7 +72,7 @@ export default function RegisterForm() {
 			{errors.user_name && <p className="text-red-500">{errors.user_name.message}</p>}
 			<div className="input-field">
 				<div className="justify-center items-center flex text-2xl text-gray-400">
-				<EmailIcon h={20} w={20} />	
+					<EmailIcon h={20} w={20} />
 				</div>
 				<input type="email" placeholder="Email" {...register("email", {
 					required: "this is required",
