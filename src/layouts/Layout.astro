@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css";
-import Header from "@/components/react/Header";
+
 import Navbar from "@/components/react/Navbar"; // nuevo
+
+const { Name } = Astro.locals;
 ---
 
 <!doctype html>
@@ -15,8 +17,9 @@ import Navbar from "@/components/react/Navbar"; // nuevo
     <section
       class="min-h-screen min-w-screen bg-gradient-to-r from-emerald-200/70 to-purple-200/70 p-2 md:p-8"
     >
-      <Navbar client:load /> <!-- nueva navbar -->
-      <Header client:load /> <!-- solo buscador -->
+      <Navbar client:load username={"invitado"} />
+      <!-- nueva navbar -->
+
       <slot />
     </section>
   </body>

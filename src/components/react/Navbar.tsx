@@ -1,36 +1,13 @@
-import React, { useState, useEffect } from "react";
-import type {JwtPayload } from "jwt-decode";
-import { jwtDecode } from "jwt-decode";
+import { useState } from "react";
 import { BellIcon, SettingIcon, UserIcon } from "../../icons/HeaderIcons";
 
-interface MyTokenPayload extends JwtPayload {
-  username?: string;
+
+interface NavbarProps {
+  username?: string; // Definimos la prop
 }
-export default function Navbar() {
+
+export default function Navbar({ username }: NavbarProps)  {
   const [menuOpen, setMenuOpen] = useState(false);
- const [username, setUsername] = useState<string | null>(null);
- 
-  useEffect(() => {
-    // Función para parsear cookies en un objeto
-    const parseCookies = (): Record<string, string> => {
-      return document.cookie.split(";").reduce((acc, cookie) => {
-        const [rawName, ...rawValue] = cookie.trim().split("=");
-        acc[rawName] = decodeURIComponent(rawValue.join("="));
-        return acc;
-      }, {} as Record<string, string>);
-    };
-
-    const cookies = parseCookies();
-
-    if (cookies.authToken) {
-      try {
-        const decoded = jwtDecode<MyTokenPayload>(cookies.authToken);
-        setUsername(decoded.username ?? null);
-      } catch (error) {
-        setUsername(null);
-      }
-    }
-  }, []);
 
   return (
     <nav className="backdrop-blur-md bg-white/30 border border-white/40 shadow-md rounded-xl m-4 px-6 py-3 flex flex-wrap justify-between items-center">
