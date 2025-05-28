@@ -59,7 +59,7 @@ export default function Navbar({ username }: NavbarProps)  {
         } w-full md:w-auto md:flex md:gap-6 text-gray-700 text-sm font-medium mt-3 md:mt-0`}
       >
         <li className="hover:text-gray-900 transition-all cursor-pointer">Inicio</li>
-        <li className="hover:text-gray-900 transition-all cursor-pointer">Galería</li>
+        <li className="hover:text-gray-900 transition-all cursor-pointer">Planificación</li>
         <li className="hover:text-gray-900 transition-all cursor-pointer">Actividades</li>
         <li className="hover:text-gray-900 transition-all cursor-pointer">Contacto</li>
       </ul>
