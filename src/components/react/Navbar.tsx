@@ -61,9 +61,11 @@ export default function Navbar({ username }: NavbarProps)  {
         <li className="hover:text-gray-900 transition-all cursor-pointer">Inicio</li>
         <li>
   <a href="/planificacion" 
-    className="hover:text-gray-900 transition-all cursor-pointer" > Planificación </a>
+    className="hover:text-gray-900 transition-all cursor-pointer" > Planificación </a></li>
+        <li>
+  <a href="/cuentas" 
+    className="hover:text-gray-900 transition-all cursor-pointer" > Cuentas </a>
 </li>
-        <li className="hover:text-gray-900 transition-all cursor-pointer">Actividades</li>
         <li className="hover:text-gray-900 transition-all cursor-pointer">Contacto</li>
       </ul>
 
