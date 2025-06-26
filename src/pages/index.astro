@@ -1,17 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Currency from "@/components/react/Currency";
-import TransaccionesTable from "@/components/react/TransaccionesTable";
 
-const transacciones = [
-  { tipo: "Ingreso", descripcion: "Sueldo", monto: 2500, fecha: "2025-05-28" },
-  { tipo: "Egreso", descripcion: "Mercado", monto: -400, fecha: "2025-05-27" },
-  { tipo: "Egreso", descripcion: "Taxi", monto: -50, fecha: "2025-05-26" },
-  { tipo: "Ingreso", descripcion: "Venta", monto: 1000, fecha: "2025-05-25" },
-];
+
+
 ---
 
-<Layout>
-  <Currency client:visible />
-<TransaccionesTable client:visible transacciones={transacciones} />
+<Layout title="Dashboart">
+ 
 </Layout>

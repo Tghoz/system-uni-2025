@@ -1,8 +1,11 @@
 ---
 import "../styles/global.css";
 
-import Navbar from "@/components/react/Navbar"; // nuevo  
+import { Sidebar } from "../components/react/sidebar/Sidebar";
+import Navbar from "@/components/react/navbar/Navbar";
+import { ViewTransitions } from "astro:transitions";
 
+const { title } = Astro.props
 const { Name } = Astro.locals;
 ---
 
@@ -10,17 +13,34 @@ const { Name } = Astro.locals;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <ViewTransitions />
+    <title>{title} - my funances </title>
   </head>
-  <body>
-    <section
-      class="min-h-screen min-w-screen bg-gradient-to-r from-emerald-200/70 to-purple-200/70 p-2 md:p-8"
-    >
-      <Navbar client:load username={Name} />
-      
+  <body class="flex min-h-screen font-sans bg-[var(--bg-primary)]">
+    <div class="pt-5">
+      <Sidebar client:load />
+    </div>
+    <div class="divider lg:divider-horizontal"></div>
 
+    <main class="flex-1 pt-10 pr-10">
+      <div class="mb-10">
+      <Navbar title={title} nameUser={Name}/> 
+      </div>
       <slot />
-    </section>
+    </main>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+              
+          
