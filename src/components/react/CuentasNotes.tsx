@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
@@ -11,7 +13,7 @@ type Plan = {
   fechaFin: string;
 };
 
-const COLORS = ["#8884d8", "#82ca9d"];
+const COLORS = ["#4F46E5", "#1E293B"];
 const RADIAN = Math.PI / 180;
 
 const renderCustomizedLabel = ({
@@ -21,7 +23,7 @@ const renderCustomizedLabel = ({
   outerRadius,
   name,
   value,
-}) => {
+}: any) => {
   const radius = outerRadius + 30;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -30,7 +32,7 @@ const renderCustomizedLabel = ({
     <text
       x={x}
       y={y}
-      fill="#333"
+      fill="#fff"
       textAnchor={x > cx ? "start" : "end"}
       dominantBaseline="central"
       className="text-sm"
@@ -40,7 +42,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function PlanNotes() {
+export default function CuentasNotes() {
   const [plans, setPlans] = useState<Plan[]>([]);
   const [formVisible, setFormVisible] = useState(false);
   const [form, setForm] = useState({
@@ -90,22 +92,22 @@ export default function PlanNotes() {
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto font-sans">
+    <div className="p-6 font-sans text-white">
       <button
         onClick={() => setFormVisible(!formVisible)}
-        className="mb-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        className="mb-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md shadow text-white font-medium transition"
       >
         {formVisible ? "Cerrar formulario" : "Agregar Cuenta"}
       </button>
 
       {formVisible && (
-        <div className="mb-10 p-6 bg-white rounded-xl shadow space-y-4 border">
+        <div className="mb-10 p-6 bg-[#1c1c1c] rounded-xl shadow space-y-4 border border-gray-700">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <select
               name="tipoCuenta"
               value={form.tipoCuenta}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 bg-[#2a2a2a] text-white border border-gray-600 rounded"
             >
               <option value="">Selecciona tipo de cuenta</option>
               <option value="Ingreso">Ingreso</option>
@@ -120,7 +122,7 @@ export default function PlanNotes() {
                 placeholder="Especificar tipo"
                 value={form.tipoCuentaPersonalizado}
                 onChange={handleChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 bg-[#2a2a2a] text-white border border-gray-600 rounded"
               />
             )}
 
@@ -130,7 +132,7 @@ export default function PlanNotes() {
               placeholder="Descripción"
               value={form.descripcion}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 bg-[#2a2a2a] text-white border border-gray-600 rounded"
             />
             <input
               type="number"
@@ -138,37 +140,37 @@ export default function PlanNotes() {
               placeholder="Saldo inicial"
               value={form.saldoInicial}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 bg-[#2a2a2a] text-white border border-gray-600 rounded"
             />
             <select
-  name="moneda"
-  value={form.moneda}
-  onChange={handleChange}
-  className="w-full p-2 border rounded"
->
-  <option value="">Selecciona una moneda</option>
-  <option value="USD">USD - Dólar estadounidense</option>
-  <option value="EUR">EUR - Euro</option>
-  <option value="GBP">GBP - Libra esterlina</option>
-  <option value="JPY">JPY - Yen japonés</option>
-  <option value="MXN">MXN - Peso mexicano</option>
-  <option value="ARS">ARS - Peso argentino</option>
-  <option value="BRL">BRL - Real brasileño</option>
-  <option value="COP">COP - Peso colombiano</option>
-  <option value="BS">BS - Bolívar</option>
-</select>
+              name="moneda"
+              value={form.moneda}
+              onChange={handleChange}
+              className="w-full p-2 bg-[#2a2a2a] text-white border border-gray-600 rounded"
+            >
+              <option value="">Selecciona una moneda</option>
+              <option value="USD">USD - Dólar estadounidense</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - Libra esterlina</option>
+              <option value="JPY">JPY - Yen japonés</option>
+              <option value="MXN">MXN - Peso mexicano</option>
+              <option value="ARS">ARS - Peso argentino</option>
+              <option value="BRL">BRL - Real brasileño</option>
+              <option value="COP">COP - Peso colombiano</option>
+              <option value="BS">BS - Bolívar</option>
+            </select>
             <input
               type="date"
               name="fechaFin"
               value={form.fechaFin}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 bg-[#2a2a2a] text-white border border-gray-600 rounded"
             />
           </div>
 
           <button
             onClick={handleAddPlan}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            className="mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md shadow text-white font-medium transition"
           >
             Guardar
           </button>
@@ -187,7 +189,7 @@ export default function PlanNotes() {
           return (
             <div
               key={plan.id}
-              className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm flex flex-col justify-between"
+              className="bg-[#1c1c1c] border border-gray-700 p-6 rounded-xl shadow-md flex flex-col justify-between"
             >
               <div>
                 <h3 className="font-semibold text-lg mb-2">{plan.descripcion}</h3>
@@ -195,7 +197,7 @@ export default function PlanNotes() {
                 <p className="text-sm">Tipo de cuenta: {plan.tipoCuenta}</p>
                 <p className="text-sm">Moneda: {plan.moneda}</p>
                 <p className="text-sm">Finaliza el: {mesFin}</p>
-                <p className="text-sm text-red-600 font-semibold mt-1">
+                <p className="text-sm text-red-500 font-semibold mt-1">
                   Faltan {diasRestantes} días
                 </p>
               </div>
@@ -205,7 +207,7 @@ export default function PlanNotes() {
                   <Pie
                     data={[
                       { name: "Saldo Inicial", value: plan.saldoInicial },
-                      { name: "Sin cambios", value: 0 }, // placeholder para visual
+                      { name: "Sin cambios", value: 0 },
                     ]}
                     cx="50%"
                     cy="50%"
