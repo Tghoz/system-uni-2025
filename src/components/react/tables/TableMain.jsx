@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { IoAddCircleOutline } from "react-icons/io5";
+import { CiSearch } from "react-icons/ci";
 
 export default function TableMain() {
   // Datos de ejemplo para la tabla
@@ -58,7 +59,7 @@ export default function TableMain() {
 
         {/* Botón de Agregar */}
         <button
-          className="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out "
+          className="btn btn-primary bg-var[--color-bg] hover:bg-var[--color-hover] text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out "
           onClick={handleAddRow}
         >
             <IoAddCircleOutline size={20}/>
